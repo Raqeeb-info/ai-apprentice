@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Apprentice · Work Map</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header class="top">
+  <h1>AI Apprentice</h1>
+  <nav><a href="/">1 · Capture</a><a class="active" href="/workmap.html">2 · Work Map</a><a href="/teach.html">3 · Teach</a></nav>
+  <span class="spacer"></span>
+  <span class="pill" id="pillState">loading…</span>
+</header>
+
+<div class="layout">
+  <main class="panel">
+    <div class="row" style="justify-content:space-between">
+      <div><h2 style="margin:0" id="wmTitle">Work Map</h2><div class="muted small" id="wmSub">Every step links to a screen moment and the expert's own words.</div></div>
+      <div class="row">
+        <span class="stat"><b id="sSteps">–</b><span class="small muted">steps</span></span>
+        <span class="stat"><b id="sJ">–</b><span class="small muted">judgment calls</span></span>
+        <span class="stat"><b id="sG">–</b><span class="small muted">guardrails</span></span>
+        <button id="btnExport">⬇ Export JSON</button>
+        <a href="/teach.html"><button class="primary" id="btnTeach" disabled>→ Train a new hire</button></a>
+      </div>
+    </div>
+    <div class="wm-grid" style="margin-top:14px">
+      <div class="timeline" id="timeline"><p class="muted">Waiting for the debrief…</p></div>
+      <div class="detail" id="detail"><p class="muted">Click a step to see its screen moment, decision, reason and guardrails.</p></div>
+    </div>
+  </main>
+
+  <aside class="panel agent">
+    <h2>Debrief</h2>
+    <div class="status"><div class="orbwrap"><svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="29"/><circle class="ring" id="ring" cx="32" cy="32" r="29"/></svg><div class="orb off" id="orb"></div></div><span id="mode" class="muted">—</span></div>
+    <div class="kv">
+      <span class="muted">Follow-up questions</span><span><span class="counter" id="cF">0</span> <span class="muted small">/ 3 required</span></span>
+      <span class="muted">Teach-back</span><span id="tb" class="small muted">not yet</span>
+    </div>
+    <div class="row" style="margin:10px 0">
+      <button id="btnDebrief" class="primary">▶ Start debrief</button>
+      <button id="btnConfirm" class="hidden">✔ Expert confirms</button>
+      <button id="btnCorrect" class="hidden">✎ Expert corrects</button>
+    </div>
+    <h3>Conversation</h3>
+    <div class="transcript" id="transcript"></div>
+    <div class="typebox"><input id="typed" placeholder="No mic? Type the expert's answer…" /><button id="btnTyped">Send</button></div>
+    <h3>Still unclear</h3>
+    <ul id="open" class="small muted"></ul>
+  </aside>
+</div>
+<script type="module" src="/workmap.js"></script>
+</body>
+</html>

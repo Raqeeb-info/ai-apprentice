@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Apprentice · Teach</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header class="top">
+  <h1>AI Apprentice</h1>
+  <nav><a href="/">1 · Capture</a><a href="/workmap.html">2 · Work Map</a><a class="active" href="/teach.html">3 · Teach</a></nav>
+  <span class="spacer"></span>
+  <span class="pill" id="pillState">loading…</span>
+</header>
+
+<div class="layout">
+  <main class="panel">
+    <div class="row" style="justify-content:space-between">
+      <div><h2 style="margin:0">Nordvik Helpdesk <span class="muted small">· new-hire mode</span></h2>
+        <div class="muted small">New hire: <b id="hireName"></b>. These are cases <span id="expertShort"></span> never showed. The tutor watches and steps in before a guardrail is broken.</div></div>
+      <div class="row"><button id="btnStart" class="primary">▶ Start training</button><button id="btnReport" disabled>📋 Finish & show progress</button></div>
+    </div>
+    <div id="app" style="margin-top:14px"></div>
+    <div id="coach" class="hidden"></div>
+  </main>
+
+  <aside class="panel agent">
+    <h2>Tutor</h2>
+    <div class="status"><div class="orbwrap"><svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="29"/><circle class="ring" id="ring" cx="32" cy="32" r="29"/></svg><div class="orb off" id="orb"></div></div><span id="mode" class="muted">—</span></div>
+    <div class="kv">
+      <span class="muted">Mistakes caught before save</span><span><span class="counter" id="cStop">0</span> <span class="muted small">/ 1 required</span></span>
+      <span class="muted">Good decisions</span><span><span class="counter" id="cOk">0</span></span>
+    </div>
+    <h3>Conversation</h3>
+    <div class="transcript" id="transcript"></div>
+    <div class="typebox"><input id="typed" placeholder="No mic? Type the new hire's answer…" /><button id="btnTyped">Send</button></div>
+    <h3>Expert's rules in play</h3>
+    <div id="rules" class="small"></div>
+  </aside>
+</div>
+
+<div id="report" class="overlay hidden"><div class="box">
+  <h2 style="margin-top:0">Training progress</h2>
+  <div id="reportBody"></div>
+  <div class="row" style="justify-content:flex-end;margin-top:12px"><button onclick="document.getElementById('report').classList.add('hidden')">Close</button></div>
+</div></div>
+<script type="module" src="/teach.js"></script>
+</body>
+</html>

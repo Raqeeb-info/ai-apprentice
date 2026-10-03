@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Apprentice · Capture</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header class="top">
+  <h1>AI Apprentice</h1>
+  <nav><a class="active" href="/">1 · Capture</a><a href="/workmap.html">2 · Work Map</a><a href="/teach.html">3 · Teach</a></nav>
+  <span class="spacer"></span>
+  <span class="pill" id="pillVoice">voice: …</span>
+  <span class="pill" id="pillLlm">brain: …</span>
+</header>
+
+<div class="layout">
+  <main class="panel">
+    <div class="row" style="justify-content:space-between">
+      <div><h2 style="margin:0">Nordvik Helpdesk <span class="muted small">· fake ERP for the demo</span></h2>
+        <div class="muted small">Expert: <b id="expertName"></b>. Work the three tickets as you normally would, and talk if you like.</div></div>
+      <div class="row">
+        <button id="btnStart" class="primary">▶ Start session</button>
+        <button id="btnShare" disabled>🖥 Share screen</button>
+        <button id="btnOff" disabled>⏸ Off the record</button>
+        <button id="btnFinish" disabled>✔ Task done → debrief</button>
+      </div>
+    </div>
+    <div id="app" style="margin-top:14px"></div>
+  </main>
+
+  <aside class="panel agent">
+    <h2>Apprentice</h2>
+    <div class="status"><div class="orbwrap"><svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="29"/><circle class="ring" id="ring" cx="32" cy="32" r="29"/></svg><div class="orb off" id="orb"></div></div><div><span id="mode">not started</span><span id="pause">—</span></div></div>
+    <div class="kv">
+      <span class="muted">Questions asked</span><span><span class="counter" id="cQ">0</span> <span class="muted small">/ 3 required</span></span>
+      <span class="muted">Guardrail questions</span><span><span class="counter" id="cG">0</span> <span class="muted small">/ 1 required</span></span>
+    </div>
+    <h3>Conversation</h3>
+    <div class="transcript" id="transcript"></div>
+    <div class="typebox"><input id="typed" placeholder="No mic? Type the expert's answer here…" /><button id="btnTyped">Send</button></div>
+    <h3>Screen events <span class="muted small">(what the apprentice sees)</span></h3>
+    <div class="events" id="events"></div>
+    <p class="small muted" style="margin:8px 0 0">Privacy: phone numbers, e-mails and IDs are redacted before anything leaves this browser. Frames are never stored. "Off the record" stops capture and transcript until resumed.</p>
+  </aside>
+</div>
+
+<video id="shareVideo" muted playsinline class="hidden"></video>
+<script type="module" src="/capture.js"></script>
+</body>
+</html>
